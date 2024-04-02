@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startup Profile</title>
+    <link href="/static/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="startup-profile-container">
+        <h1>{{ startup.name }}</h1>
+        <p>Business Model: {{ startup.business_model }}</p>
+        <p>Market Insights: {{ startup.market_insights }}</p>
+        <p>Funding Needs: {{ startup.funding_needs }}</p>
+        <button onclick="location.href='{% url 'express_interest' startup.id %}'">Express Interest</button>
+    </div>
+</body>
+</html>

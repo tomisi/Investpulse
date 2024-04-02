@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="/static/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        {% if user.profile.user_type == 'startup' %}
+            <h1>Welcome, {{ user.profile.name }}!</h1>
+            <p>Market Insights: {{ user.profile.market_insights }}</p>
+            <p>Funding Needs: {{ user.profile.funding_needs }}</p>
+            <!-- Add more startup specific details -->
+        {% elif user.profile.user_type == 'investor' %}
+            <h1>Welcome, {{ user.profile.name }}!</h1>
+            <h2>Startup Suggestions</h2>
+            <ul>
+                {% for startup in suggested_startups %}
+                    <li>
+                        <a href="{% url 'startup_detail' startup.id %}">{{ startup.name }}</a>
+                        - Match Score: {{ startup.match_score }}
+                    </li>
+                {% endfor %}
+            </ul>
+            <!-- Add more investor specific details -->
+        {% endif %}
+    </div>
+</body>
+</html>
